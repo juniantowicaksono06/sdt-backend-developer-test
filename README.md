@@ -103,3 +103,9 @@ If you want to try the unit test you can use the following command:
 npm run test:windows # For Windows User
 npm run test:linux # For Linux User
 ```
+
+### Email Broadcast Service
+If you want to run the email broadcast service, you can use the following command
+```bash
+npm run broadcast
+```
