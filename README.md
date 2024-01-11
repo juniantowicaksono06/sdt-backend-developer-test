@@ -32,6 +32,26 @@ For the email broadcast service you can run with the following command:
 npm run broadcast
 ```
 
+### Environment
+Here are the environment that i used in this test
+```bash
+PORT=5002 # Express listening Port
+DB_USER=root # For Database Username Authentication
+DB_PASS=Abcd1234 # For Database Password Authentication
+DB_HOST=172.20.138.191 # For Database Password Authentication
+DB_PORT=3309 # For Database Port
+DB_NAME=my_app # Database name
+EMAIL_SERVICE=https://email-service.digitalenvision.com.au # Base URL for email service
+```
+
+### Migration
+I also provide a migration for the database
+You can use the following command to create and populate the table
+```bash
+npx sequelize db:migrate # For migration
+npx sequelize db:seed:all # For populate the table with dummy data
+```
+
 ### API Endpoint
 
 #### Create User
