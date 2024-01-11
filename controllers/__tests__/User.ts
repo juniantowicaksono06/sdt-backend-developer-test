@@ -1,5 +1,5 @@
 import request, {Response} from 'supertest'
-import app, {server} from '../../index'
+import app, {server} from '../..'
 import Users from '../../models/Users'
 
 beforeAll(done => {
@@ -12,7 +12,7 @@ afterAll((done) => {
 })
 
 describe("Test user API", () => {
-    test("Test user api post without parameters", async() => {
+    test("Create user without any input", async() => {
         const res = await request(app).post('/api/user')
         expect(res.body).toEqual({
             "statusCode": 400,
@@ -20,7 +20,7 @@ describe("Test user API", () => {
             "message": "\"first_name\" is required"
         })
     })
-    test("Test user api post success", async() => {
+    test("Create User", async() => {
         const userData = {
             "first_name": "Ini Nama Depan",
             "last_name": "Ini Nama Belakang",
@@ -41,14 +41,6 @@ describe("Test user API", () => {
         expect(response.status).toBe(201)
         // expect(res.body).toEqual()
     })
-    test("Delete Existing Users", async() => {        
-        const response: Response = await request(app).delete(`/api/user/8`)
-        expect(response.body).toEqual({
-            "message": "User deleted successfully"
-        })
-        expect(response.status).toBe(200)
-        // expect(res.body).toEqual()
-    })
     test("Delete Latest User", async() => {
         const data = await Users.findOne({
             order: [['user_id', 'DESC']]
@@ -67,5 +59,26 @@ describe("Test user API", () => {
         const response: Response = await request(app).delete('/api/user')
         expect(response.status).toBe(404)
         // expect(res.body).toEqual()
+    })
+    test("Update User", async() => {
+        const userData = {
+            "first_name": "Junianto Ichwan",
+            "last_name": "Dwi Wicaksono",
+            "email": "juniantowicaksono22@gmail.com",
+            "location": "Surabaya",
+            "event": [{
+                "event_type": "BIRTHDAY",
+                "initial_date": "1998-06-22"
+            }]
+        }
+        const response: Response = await request(app).put('/api/user/1').send(userData).set('Content-Type', 'application/json')
+        expect(response.body).toEqual({
+            "message": "User updated successfully"
+        })
+        expect(response.status).toBe(200)
+    })
+    test("Update User without ID", async() => {
+        const response: Response = await request(app).put('/api/user')
+        expect(response.status).toBe(404)
     })
 })

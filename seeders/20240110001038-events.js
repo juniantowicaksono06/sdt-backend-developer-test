@@ -17,13 +17,11 @@ module.exports = {
         event_name: "BIRTHDAY",
         message: "Hey, {full_name} it's your birthday",
         broadcast_on: "09:00:00",
-        event_type: "Yearly"
       },
       {
         event_name: "ANNIVERSARY",
         message: "Hey, {full_name} it's your anniversary day",
         broadcast_on: "09:00:00",
-        event_type: "Yearly"
       }
     ], {})
   },

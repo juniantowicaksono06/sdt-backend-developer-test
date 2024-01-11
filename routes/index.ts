@@ -1,6 +1,6 @@
 import { Express, Request, Response, NextFunction } from "express-serve-static-core";
 import { ServerResponse, IncomingMessage, Server } from 'http'
-import { Create, Delete } from "../controllers/Users";
+import { Create, Delete, Update } from "../controllers/Users";
 import { Router } from "express";
 
 const mountRoutes = (app: Express, server: Server<typeof IncomingMessage, typeof ServerResponse>) => {   
@@ -11,6 +11,9 @@ const mountRoutes = (app: Express, server: Server<typeof IncomingMessage, typeof
 
     // Delete User Endpoint
     router.delete('/user/:userId', Delete)
+
+    // Update User Endpoint
+    router.put('/user/:userId', Update)
     
     // Add prefix API to endpoint
     app.use('/api', router)

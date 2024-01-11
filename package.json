@@ -5,11 +5,11 @@
   "author": "Junianto Ichwan Dwi Wicaksono",
   "license": "MIT",
   "scripts": {
-    "start": "node --experimental-specifier-resolution=node index.ts",
+    "start": "ts-node --experimental-specifier-resolution=node index.ts",
     "dev": "nodemon --experimental-specifier-resolution=node index.ts",
     "test:windows": "set NODE_ENV=test&& jest --runInBand --detectOpenHandles --forceExit",
     "test:linux": "NODE_ENV=test&& jest --runInBand --detectOpenHandles --forceExit",
-    "broadcast": "node --experimental-specifier-resolution=node broadcast.ts",
+    "broadcast": "ts-node --experimental-specifier-resolution=node broadcast.ts",
     "broadcast:dev": "nodemon broadcast.ts"
   },
   "dependencies": {

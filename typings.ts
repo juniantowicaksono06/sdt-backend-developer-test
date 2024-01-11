@@ -17,4 +17,17 @@ type EventInputType = {
     initial_date?: string
 }
 
-export { UserType, UserEventType, EventInputType }
+type EventNameType = "BIRTHDAY" | "ANNIVERSARY"
+
+interface EventQueueType {
+    user_id: number,
+    event_id: number,
+    event_date: string,
+    timezone_name: string,
+    full_name: string,
+    email: string,
+    event_name: EventNameType,
+    message: string
+}
+
+export { UserType, UserEventType, EventInputType, EventQueueType, EventNameType }

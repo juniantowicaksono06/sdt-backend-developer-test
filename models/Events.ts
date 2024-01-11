@@ -17,10 +17,6 @@ const Events = db.define('events', {
         type: DataTypes.STRING,
         allowNull: false
     },
-    event_type: {
-        type: DataTypes.STRING,
-        allowNull: false
-    },
     created_at: {
         type: DataTypes.DATE,
         defaultValue: Sequelize.literal('CURRENT_TIMESTAMP'),

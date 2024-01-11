@@ -4,12 +4,16 @@ import User from "./Users"
 import Event from "./Events"
 import Sequelize from "sequelize"
 
-const BroadCastMessage = db.define('user_event', {
+const BroadCastMessage = db.define('broadcast_message', {
     broadcast_id: {
         type: DataTypes.INTEGER,
         allowNull: false,
         primaryKey: true,
         autoIncrement: true,
+    },
+    message: {
+        type: DataTypes.STRING,
+        allowNull: false
     },
     broadcast_at: {
         type: DataTypes.DATE,
