@@ -3,7 +3,7 @@ import db from "../config/database"
 import User from "./Users"
 import Sequelize from "sequelize"
 
-const Location = db.define('locations', {
+const Locations = db.define('locations', {
     location_id: {
         type: DataTypes.INTEGER,
         allowNull: false,
@@ -27,12 +27,12 @@ const Location = db.define('locations', {
     timestamps: false
 })
 
-Location.belongsTo(User, {
+Locations.belongsTo(User, {
     foreignKey: "location_id"
 })
 
-User.hasOne(Location, {
+User.hasOne(Locations, {
     foreignKey: "location_id"
 })
 
-export default Location
+export default Locations

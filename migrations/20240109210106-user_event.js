@@ -25,8 +25,8 @@ module.exports = {
           allowNull: false
       },
       event_initial_date: {
-          type: Sequelize.DATE,
-          defaultValue: Sequelize.literal('CURRENT_TIMESTAMP'),
+          type: Sequelize.DATEONLY,
+          defaultValue: null,
           allowNull: true
       },
       created_at: {

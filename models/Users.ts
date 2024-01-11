@@ -2,7 +2,7 @@ import { DataTypes } from "sequelize"
 import db from "../config/database"
 import Sequelize from "sequelize"
 
-const User = db.define('users', {
+const Users = db.define('users', {
     user_id: {
         type: DataTypes.INTEGER,
         allowNull: false,
@@ -16,6 +16,10 @@ const User = db.define('users', {
     last_name: {
         type: DataTypes.STRING,
         allowNull: true
+    },
+    email: {
+        type: DataTypes.STRING(200),
+        allowNull: false
     },
     location_id: {
         type: DataTypes.INTEGER,
@@ -35,4 +39,4 @@ const User = db.define('users', {
     timestamps: false
 })
 
-export default User
+export default Users

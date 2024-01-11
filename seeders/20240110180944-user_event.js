@@ -12,20 +12,18 @@ module.exports = {
      *   isBetaMember: false
      * }], {});
     */
-    await queryInterface.bulkInsert('events', [
-      {
-        event_name: "BIRTHDAY",
-        message: "Hey, {full_name} it's your birthday",
-        broadcast_on: "09:00:00",
-        event_type: "Yearly"
-      },
-      {
-        event_name: "ANNIVERSARY",
-        message: "Hey, {full_name} it's your anniversary day",
-        broadcast_on: "09:00:00",
-        event_type: "Yearly"
-      }
-    ], {})
+   await queryInterface.bulkInsert('user_event', [
+    {
+      user_id: 1,
+      event_id: 1,
+      event_initial_date: "1998-06-22"
+    },
+    {
+      user_id: 2,
+      event_id: 1,
+      event_initial_date: "2009-11-07"
+    }
+   ])
   },
 
   async down (queryInterface, Sequelize) {
@@ -35,6 +33,6 @@ module.exports = {
      * Example:
      * await queryInterface.bulkDelete('People', null, {});
      */
-    await queryInterface.bulkDelete('events', null, {});
+    await queryInterface.bulkDelete('user_event', null, {});
   }
 };

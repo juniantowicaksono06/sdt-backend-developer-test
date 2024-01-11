@@ -24,6 +24,10 @@ module.exports = {
           type: Sequelize.TEXT,
           allowNull: false
       },
+      broadcast_on: {
+        type: Sequelize.TIME,
+        allowNull: false
+      },
       event_type: {
           type: Sequelize.STRING,
           allowNull: false

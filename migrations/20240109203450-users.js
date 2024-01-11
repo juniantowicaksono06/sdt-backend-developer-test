@@ -24,6 +24,10 @@ module.exports = {
           type: Sequelize.STRING(200),
           allowNull: true
       },
+      email: {
+          type: Sequelize.STRING(200),
+          allowNull: false
+      },
       location_id: {
         type: Sequelize.INTEGER,
         allowNull: false

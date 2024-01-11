@@ -1,12 +1,16 @@
 {
   "name": "quick-test",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "index.ts",
   "author": "Junianto Ichwan Dwi Wicaksono",
   "license": "MIT",
   "scripts": {
     "start": "node --experimental-specifier-resolution=node index.ts",
-    "dev": "nodemon --experimental-specifier-resolution=node index.ts"
+    "dev": "nodemon --experimental-specifier-resolution=node index.ts",
+    "test:windows": "set NODE_ENV=test&& jest --runInBand --detectOpenHandles --forceExit",
+    "test:linux": "NODE_ENV=test&& jest --runInBand --detectOpenHandles --forceExit",
+    "broadcast": "node --experimental-specifier-resolution=node broadcast.ts",
+    "broadcast:dev": "nodemon broadcast.ts"
   },
   "dependencies": {
     "@hapi/boom": "^10.0.1",
@@ -18,15 +22,25 @@
     "express": "^4.18.2",
     "http": "^0.0.1-security",
     "moment": "^2.30.1",
+    "moment-timezone": "^0.5.44",
     "mysql2": "^3.7.0",
     "sequelize": "^6.35.2",
     "sequelize-cli": "^6.6.2",
-    "ts-node": "^10.9.2"
+    "supertest": "^6.3.3"
   },
   "devDependencies": {
+    "@types/chai": "^4.3.11",
     "@types/cors": "^2.8.17",
+    "@types/expect": "^24.3.0",
     "@types/express": "^4.17.21",
     "@types/hapi__joi": "^17.1.14",
+    "@types/jest": "^29.5.11",
+    "@types/mocha": "^10.0.6",
+    "@types/node": "^20.10.8",
+    "@types/supertest": "^6.0.2",
+    "jest": "^29.7.0",
+    "ts-jest": "^29.1.1",
+    "ts-node": "^10.9.2",
     "typescript": "^5.3.3"
   }
 }

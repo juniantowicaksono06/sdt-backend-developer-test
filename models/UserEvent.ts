@@ -12,9 +12,9 @@ const UserEvent = db.define('user_event', {
         autoIncrement: true,
     },
     event_initial_date: {
-        type: DataTypes.DATE,
-        defaultValue: Sequelize.literal('CURRENT_TIMESTAMP'),
-        allowNull: false
+        type: DataTypes.DATEONLY,
+        defaultValue: null,
+        allowNull: true
     },
     created_at: {
         type: DataTypes.DATE,

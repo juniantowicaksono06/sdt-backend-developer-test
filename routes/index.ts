@@ -1,4 +1,4 @@
-import { Express, Request, Response, NextFunction, Errback } from "express-serve-static-core";
+import { Express, Request, Response, NextFunction } from "express-serve-static-core";
 import { ServerResponse, IncomingMessage, Server } from 'http'
 import { Create, Delete } from "../controllers/Users";
 import { Router } from "express";

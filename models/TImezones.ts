@@ -1,9 +1,9 @@
 import { DataTypes } from "sequelize"
 import db from "../config/database"
-import Location from "./Locations"
+import Locations from "./Locations"
 import Sequelize from "sequelize"
 
-const Timezone = db.define('timezones', {
+const Timezones = db.define('timezones', {
     timezone_id: {
         type: DataTypes.INTEGER,
         allowNull: false,
@@ -24,12 +24,12 @@ const Timezone = db.define('timezones', {
 })
 
 
-Timezone.belongsTo(Location, {
+Timezones.belongsTo(Locations, {
     foreignKey: "timezone_id"
 })
 
-Location.hasOne(Location, {
+Locations.hasOne(Locations, {
     foreignKey: "timezone_id"
 })
 
-export default Timezone
+export default Timezones

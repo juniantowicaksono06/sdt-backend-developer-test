@@ -4,7 +4,7 @@ import Joi, {ValidationResult} from "@hapi/joi";
 import { returnSuccess } from "../utils/response";
 import Location from "../models/Locations";
 import db from "../config/database";
-import User from "../models/Users";
+import Users from "../models/Users";
 import { EventInputType, UserEventType, UserType } from "../typings";
 import { Transaction } from "sequelize";
 import Events from "../models/Events";
@@ -17,6 +17,7 @@ const Create = async (req: Request, res: Response, next: NextFunction) => {
         const schema = Joi.object({
             first_name: Joi.string().max(200).required(),
             last_name: Joi.string().max(200).required(),
+            email: Joi.string().max(200).required(),
             location: Joi.string().max(255).required(),
             event: Joi.array().items(Joi.object({
                 event_type: Joi.string().required(),
@@ -38,6 +39,17 @@ const Create = async (req: Request, res: Response, next: NextFunction) => {
             }
         })
 
+        const email = await Users.findOne({
+            where: {
+                email: data['email']
+            }
+        })
+
+        // Check the email if it's exists in database?
+        if(email) {
+            return next(Boom.conflict("Email is already taken"))
+        }
+
         // Check the location if it's exists in database?
         if(userLocation === null) {
             return next(Boom.notFound("Location is not found"))
@@ -51,10 +63,11 @@ const Create = async (req: Request, res: Response, next: NextFunction) => {
             const userData: UserType = {
                 first_name: data['first_name'],
                 last_name: data['last_name'],
+                email: data['email'],
                 location_id: locationId
             }
             // Insert User data
-            const newUser = await User.create({
+            const newUser = await Users.create({
                 ...userData
             }, {
                 transaction: transaction
@@ -93,9 +106,10 @@ const Create = async (req: Request, res: Response, next: NextFunction) => {
             }
             await transaction.commit()
 
-            return returnSuccess(200, res)
+            return returnSuccess(201, res, 'User created successfully')
         }
         catch(error) {
+            console.log(error)
             await transaction.rollback()
             throw new Error(error as string)
         }
@@ -115,7 +129,7 @@ const Delete = async (req: Request, res: Response, next: NextFunction) => {
     }
     const transaction = await db.transaction()
     try {
-        const user = await User.findOne({
+        const user = await Users.findOne({
             where: {
                 user_id: userId
             }
@@ -123,13 +137,13 @@ const Delete = async (req: Request, res: Response, next: NextFunction) => {
         if(user == null) {
             return next(Boom.notFound("User not found!"))
         }
-        await User.destroy({
+        await Users.destroy({
             where: {
                 user_id: userId
             }
         })
         await transaction.commit()
-        return returnSuccess(200, res, "User deleted")
+        return returnSuccess(200, res, "User deleted successfully")
     }
     catch(error: any) {
         await transaction.rollback()

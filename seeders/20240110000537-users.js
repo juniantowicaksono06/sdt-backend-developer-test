@@ -16,43 +16,33 @@ module.exports = {
       {
         first_name: "Junianto",
         last_name: "Wicaksono",
+        email: "juniantowicaksono22@gmail.com",
         location_id: 2,
       },
       {
         first_name: "Alisa Mikhailovna",
         last_name: "Kujou",
+        email: "anonim1@mail.com",
         location_id: 7,
       },
       {
         first_name: "Nyoman",
         last_name: "Arnawan",
+        email: "anonim2@mail.com",
         location_id: 3,
       },
       {
         first_name: "Jeremy",
         last_name: null,
+        email: "anonim3@mail.com",
         location_id: 4,
       },
       {
         first_name: "John",
         last_name: "Doe",
+        email: "anonim4@mail.com",
         location_id: 4,
       },
-      {
-        first_name: "Ahmad",
-        last_name: "Munir",
-        location_id: 5,
-      },
-      {
-        first_name: "Testing",
-        last_name: "Tes",
-        location_id: 1,
-      },
-      {
-        first_name: "Coba",
-        last_name: "Tes lagi",
-        location_id: 6,
-      }
     ], {})
   },
 
