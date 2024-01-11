@@ -109,3 +109,5 @@ If you want to run the email broadcast service, you can use the following comman
 ```bash
 npm run broadcast
 ```
+
+You can check if the broadcast is successfully sent to the user on the table broadcast_message
